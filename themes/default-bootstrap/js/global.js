@@ -302,7 +302,7 @@ function display(view)
 				html += '<div class="content_price col-xs-5 col-md-12">'+ price + '</div>';
 			}
 			html += '<div class="button-container col-xs-7 col-md-12">'+ $(element).find('.button-container').html() +'</div>';
-			html += '<div class="functional-buttons clearfix col-sm-12">' + $(element).find('.functional-buttons').html() + '</div>';
+            html += '<div class="functional-buttons clearfix col-sm-12">' + $(element).find('.functional-buttons').html() + '</div>';
 			html += '</div>';
 			html += '</div></div>';
 			$(element).html(html);
@@ -317,36 +317,37 @@ function display(view)
 		$('.product_list > li').removeClass('col-xs-12').addClass('col-xs-12 col-sm-6 col-md-4');
 		$('.product_list > li').each(function(index, element) {
 			var html = '';
-			html += '<div class="product-container">';
-			html += '<div class="left-block">' + $(element).find('.left-block').html() + '</div>';
-			html += '<div class="right-block">';
-			html += '<div class="product-flags">'+ $(element).find('.product-flags').html() + '</div>';
-			html += '<h5 itemprop="name">'+ $(element).find('h5').html() + '</h5>';
-			var hookReviews = $(element).find('.hook-reviews');
-			if (hookReviews.length) {
-				html += hookReviews.clone().wrap('<div>').parent().html();
-			}
-			html += '<p itemprop="description" class="product-desc">'+ $(element).find('.product-desc').html() + '</p>';
-			var price = $(element).find('.content_price').html(); // check : catalog mode is enabled
-			if (price != null) {
-				html += '<div class="content_price">'+ price + '</div>';
-			}
-			html += '<div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="button-container">'+ $(element).find('.button-container').html() +'</div>';
-			var colorList = $(element).find('.color-list-container').html();
-			if (colorList != null) {
-				html += '<div class="color-list-container">'+ colorList +'</div>';
-			}
-			var availability = $(element).find('.availability').html(); // check : catalog mode is enabled
-			if (availability != null) {
-				html += '<span class="availability">annika2'+ availability +'</span>';
-			}
-			html += '</div>';
-			html += '<div class="functional-buttons clearfix">' + $(element).find('.functional-buttons').html() + '</div>';
-			html += '</div>';
-			$(element).html(html);
+            html += '<div class="product-container">';
+            html += '<div class="left-block">' + $(element).find('.left-block').html() + '</div>';
+            html += '<div class="right-block">';
+            html += '<div class="product-flags">'+ $(element).find('.product-flags').html() + '</div>';
+            html += '<h5 itemprop="name">'+ $(element).find('h5').html() + '</h5>';
+            var rating = $(element).find('.comments_note').html(); // check : rating
+            if (rating != null) {
+                html += '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="comments_note">'+ rating + '</div>';
+            }
+            html += '<p itemprop="description" class="product-desc">'+ $(element).find('.product-desc').html() + '</p>';
+            var price = $(element).find('.content_price').html(); // check : catalog mode is enabled
+            if (price != null) {
+                html += '<div class="content_price">'+ price + '</div>';
+            }
+            html += '<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="button-container">'+ $(element).find('.button-container').html() +'</div>';
+            var colorList = $(element).find('.color-list-container').html();
+            if (colorList != null) {
+                html += '<div class="color-list-container">'+ colorList +'</div>';
+            }
+            var availability = $(element).find('.availability').html(); // check : catalog mode is enabled
+            if (availability != null) {
+                html += '<span class="availability">'+ availability +'</span>';
+            }
+            html += '</div>';
+            html += '<div class="functional-buttons clearfix">' + $(element).find('.functional-buttons').html() + '</div>';
+            html += '</div>';
+            $(element).html(html);
 		});
 		$('.display').find('li#grid').addClass('selected');
 		$('.display').find('li#list').removeAttr('class');
+        window.location.reload();
 		$.totalStorage('display', 'grid');
 	}
 }

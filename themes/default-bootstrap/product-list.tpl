@@ -163,21 +163,20 @@
 								</span>
 							{/if}
 						{/if}
-
-						{if $page_name != 'index'}
-							<div class="functional-buttons clearfix">
-								{hook h='displayProductListFunctionalButtons' product=$product}
-								{*{if isset($comparator_max_item) && $comparator_max_item}*}
-								{*<a class="button lnk_view btn btn-default" href="{$product.link|escape:'html':'UTF-8'}" title="{l s='View'}">*}
-								{*<span>{if (isset($product.customization_required) && $product.customization_required)}{l s='Customize'}{else}{l s='More'}{/if}</span>*}
-								{*</a>*}
-								{*{/if}*}
-							</div>
-						{/if}
 					</div>
-					{*{if isset($product.color_list)}*}
-						{*<div class="color-list-container">{$product.color_list}</div>*}
-					{*{/if}*}
+					{if $page_name != 'index'}
+						<div class="functional-buttons clearfix">
+							{hook h='displayProductListFunctionalButtons' product=$product}
+							{if isset($comparator_max_item) && $comparator_max_item}
+								<div class="compare">
+									<a class="add_to_compare" href="{$product.link|escape:'html':'UTF-8'}" data-id-product="{$product.id_product}">{l s='Add to Compare'}</a>
+								</div>
+							{/if}
+						</div>
+					{/if}
+					{if !empty($product.color_list)}
+						<div class="color-list-container">{$product.color_list}</div>
+					{/if}
 					<div class="product-flags">
 						{if (!$PS_CATALOG_MODE AND ((isset($product.show_price) && $product.show_price) || (isset($product.available_for_order) && $product.available_for_order)))}
 							{if isset($product.online_only) && $product.online_only}
@@ -209,16 +208,6 @@
 						{/if}
 					{/if}
 				</div>
-				{if $page_name != 'index'}
-					<div class="functional-buttons clearfix">
-						{hook h='displayProductListFunctionalButtons' product=$product}
-						{if isset($comparator_max_item) && $comparator_max_item}
-							<div class="compare">
-								<a class="add_to_compare" href="{$product.link|escape:'html':'UTF-8'}" data-id-product="{$product.id_product}">{l s='Add to Compare'}</a>
-							</div>
-						{/if}
-					</div>
-				{/if}
 			</div><!-- .product-container> -->
 		</li>
 	{/foreach}
