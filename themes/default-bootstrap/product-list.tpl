@@ -77,7 +77,7 @@
 											{displayWtPrice p=$product.price_without_reduction}
 										</span>
 										{if $product.specific_prices.reduction_type == 'percentage'}
-											<span class="price-percent-reduction">-{$product.specific_prices.reduction * 100}%</span>
+											<span class="price-percent-reduction">-{round($product.specific_prices.reduction * 100, 0)}%</span>
 										{/if}
 									{/if}
 									{if $PS_STOCK_MANAGEMENT && isset($product.available_for_order) && $product.available_for_order && !isset($restricted_country_mode)}
@@ -141,7 +141,7 @@
 								</span>
 								{hook h="displayProductPriceBlock" id_product=$product.id_product type="old_price"}
 								{if $product.specific_prices.reduction_type == 'percentage'}
-									<span class="price-percent-reduction">-{$product.specific_prices.reduction * 100}%</span>
+									<span class="price-percent-reduction">-{round($product.specific_prices.reduction * 100, 0)}%</span>
 								{/if}
 							{/if}
 							{hook h="displayProductPriceBlock" product=$product type="price"}
@@ -163,13 +163,21 @@
 								</span>
 							{/if}
 						{/if}
-						<a class="button lnk_view btn btn-default" href="{$product.link|escape:'html':'UTF-8'}" title="{l s='View'}">
-							<span>{if (isset($product.customization_required) && $product.customization_required)}{l s='Customize'}{else}{l s='More'}{/if}</span>
-						</a>
+
+						{if $page_name != 'index'}
+							<div class="functional-buttons clearfix">
+								{hook h='displayProductListFunctionalButtons' product=$product}
+								{*{if isset($comparator_max_item) && $comparator_max_item}*}
+								{*<a class="button lnk_view btn btn-default" href="{$product.link|escape:'html':'UTF-8'}" title="{l s='View'}">*}
+								{*<span>{if (isset($product.customization_required) && $product.customization_required)}{l s='Customize'}{else}{l s='More'}{/if}</span>*}
+								{*</a>*}
+								{*{/if}*}
+							</div>
+						{/if}
 					</div>
-					{if isset($product.color_list)}
-						<div class="color-list-container">{$product.color_list}</div>
-					{/if}
+					{*{if isset($product.color_list)}*}
+						{*<div class="color-list-container">{$product.color_list}</div>*}
+					{*{/if}*}
 					<div class="product-flags">
 						{if (!$PS_CATALOG_MODE AND ((isset($product.show_price) && $product.show_price) || (isset($product.available_for_order) && $product.available_for_order)))}
 							{if isset($product.online_only) && $product.online_only}

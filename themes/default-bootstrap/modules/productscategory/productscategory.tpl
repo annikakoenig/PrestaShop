@@ -46,7 +46,7 @@
 
 						<span class="price special-price">{convertPrice price=$categoryProduct.displayed_price}</span>
 						{if $categoryProduct.specific_prices.reduction && $categoryProduct.specific_prices.reduction_type == 'percentage'}
-							<span class="price-percent-reduction small">-{$categoryProduct.specific_prices.reduction * 100}%</span>
+							<span class="price-percent-reduction small">-{round($categoryProduct.specific_prices.reduction * 100, 0)}%</span>
 						{/if}
 						<span class="old-price">{displayWtPrice p=$categoryProduct.price_without_reduction}</span>
 

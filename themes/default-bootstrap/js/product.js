@@ -826,7 +826,7 @@ function updatePrice()
 		{
 			if (combination.specific_price.reduction_type == 'amount')
 			{
-				$('#reduction_amount_display').html('-' + formatCurrency(discountValue, currencyFormat, currencySign, currencyBlank));
+				$('#reduction_amount_display').html('-' + formatCurrency(+discountValue * currencyRate, currencyFormat, currencySign, currencyBlank));
 				$('#reduction_amount').show();
 			}
 			else

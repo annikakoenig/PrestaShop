@@ -160,6 +160,12 @@
 				<label>{l s='Reference:'} </label>
 				<span class="editable" itemprop="sku"{if !empty($product->reference) && $product->reference} content="{$product->reference}"{/if}>{if !isset($groups)}{$product->reference|escape:'html':'UTF-8'}{/if}</span>
 			</p>
+			{if $product->ean13}
+			<p id="product_ean">
+				<label>{l s='EAN:'}</label>
+				<span>{$product->ean13}</span>
+			</p>
+			{/if}
 			{if !$product->is_virtual && $product->condition}
 			<p id="product_condition">
 				<label>{l s='Condition:'} </label>
@@ -271,7 +277,7 @@
 								{/strip}</p>
 								<p id="reduction_percent" {if $productPriceWithoutReduction <= 0 || !$product->specificPrice || $product->specificPrice.reduction_type != 'percentage'} style="display:none;"{/if}>{strip}
 									<span id="reduction_percent_display">
-										{if $product->specificPrice && $product->specificPrice.reduction_type == 'percentage'}-{$product->specificPrice.reduction*100}%{/if}
+										{if $product->specificPrice && $product->specificPrice.reduction_type == 'percentage'}-{round($product->specificPrice.reduction*100, 0)}%{/if}
 									</span>
 								{/strip}</p>
 								<p id="reduction_amount" {if $productPriceWithoutReduction <= 0 || !$product->specificPrice || $product->specificPrice.reduction_type != 'amount' || $product->specificPrice.reduction|floatval ==0} style="display:none"{/if}>{strip}
