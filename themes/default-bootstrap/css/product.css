@@ -251,7 +251,7 @@ span.view_scroll_spacer {
       border: none;
       padding: 0; }
     #usefull_link_block li a {
-      color: #777676;
+      color: #999;
       font-weight: 700;
       position: relative;
       padding-left: 30px;
@@ -259,7 +259,6 @@ span.view_scroll_spacer {
       display: inline-block; }
       #usefull_link_block li a:before {
         font-family: "FontAwesome";
-        color: #555;
         font-size: 19px;
         line-height: 24px;
         position: absolute;
@@ -267,7 +266,7 @@ span.view_scroll_spacer {
         left: 0;
         font-weight: normal; }
       #usefull_link_block li a:hover {
-        color: #000; }
+        color: #fff; }
     @media (min-width: 768px) and (max-width: 991px) {
       #usefull_link_block li.print {
         margin: 8px 0 0;
@@ -315,7 +314,7 @@ span.view_scroll_spacer {
   .pb-center-column h1 {
     padding-bottom: 16px;
     font-size: 20px;
-    color: #999; }
+    color: #cacaca; }
   .pb-center-column p {
     margin-bottom: 10px; }
   .pb-center-column #product_reference {
@@ -323,7 +322,7 @@ span.view_scroll_spacer {
   .pb-center-column #product_ean {
     margin-bottom: 6px; }
   .pb-center-column #short_description_block {
-    color: #666; }
+    color: #cacaca; }
     .pb-center-column #short_description_block .buttons_bottom_block {
       display: none; }
     .pb-center-column #short_description_block #short_description_content {
@@ -344,6 +343,9 @@ span.view_scroll_spacer {
   .pb-center-column #color_picker p {
     padding-bottom: 5px;
     font-weight: 700; }
+    .pb-center-column label {
+        color: inherit;
+    }
 
 #product p#loyalty {
   padding: 17px 0 15px 35px;
@@ -745,8 +747,7 @@ table.table-product-discounts {
   font-weight: 700;
   line-height: 18px;
   display: inline-block;
-  padding: 3px 8px 4px;
-  margin-left: 5px; }
+  padding: 3px 8px 4px; }
 
 #last_quantities {
   background: #fe9126;
