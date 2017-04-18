@@ -293,7 +293,7 @@ function display(view)
 			}
 			var availability = $(element).find('.availability').html();	// check : catalog mode is enabled
 			if (availability != null) {
-				html += '<span class="availability">annika1'+ availability +'</span>';
+				html += '<span class="availability">'+ availability +'</span>';
 			}
 			html += '</div>';
 			html += '<div class="right-block col-xs-4 col-sm-12 col-md-4"><div class="right-block-content row">';
